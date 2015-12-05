@@ -7,20 +7,25 @@
 		<meta name="author" content="SitePoint">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/range-slider.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	</head>
 	<body>
-		<p><button id="add">Add</button></p>
-		<p><button id="back">Back</button></p>
-		<div class="container">
+		<div class="page-header">
+		  <h1>TechCrunch Disrupt 2015</small></h1>
+		</div>
+		<div class="container-fluid">
 		</div>
 		<div class="buttons">
 			<div class="animate-button">
-				<p><button id="animate-on" onclick="addObject()">Animate</button></p>
-				<!-- <p><button onclick="stopInterval()" id="animate-off">Stop animation</button></p> -->
+				<p><button id="animate-on" class="btn btn-lg btn-default" onclick="addObject()">Animate</button></p>
 				<input id="range" type="range" min="0" max="100" value="0" onchange="changeOffset(value)">
 			</div>
 		</div>
 		<script type="text/javascript" src="js/script.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	</body>
 </html>

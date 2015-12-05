@@ -1,12 +1,33 @@
-.container{
+.container-fluid {
     height: 500px;
-    width: 2000px;
+    width: 100%;
+    position: relative;
+    /*background: url("https://tctechcrunch2011.files.wordpress.com/2013/10/screen-shot-2013-10-30-at-10-07-08-pm.jpg");*/
+}
+
+html,body{ margin:0; padding:0 !important; height:100%; width:100%; }
+
+.container-fluid:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(https://tctechcrunch2011.files.wordpress.com/2013/10/screen-shot-2013-10-30-at-10-07-08-pm.jpg) no-repeat center center; 
+    width: 100%;
+    height: 100%;
+    opacity : 0.2;
+    z-index: -1;
+}
+.page-header {
+	text-align: center;
 }
 
 .animate-button {
 	display: inline;
 }
 .buttons {
+	margin: 2em;
 	text-align: center;
 }
 
