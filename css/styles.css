@@ -1,0 +1,15 @@
+.container{
+    height: 500px;
+    width: auto;
+}
+
+.animate-button {
+	text-align: center;
+}
+
+.object{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    display: none;
+}
