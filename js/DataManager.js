@@ -1,7 +1,7 @@
 var util = (function(){
 
   function ajaxRequest(options) {
-    var apiUrl = "";
+    var apiUrl = "https://api.parse.com/1/classes/";
 
     var ajaxOptions = {
       type: options.method,
@@ -12,10 +12,10 @@ var util = (function(){
       },
       error: function(e) {
         e = e || {};
-        log("Something went wrong...", e.responseJSON || e);
+        console.log("Something went wrong...", e.responseJSON || e);
 
         if (options.errorCallback) options.errorCallback(e);
-      }
+      },
       complete: function(e) {
         if (options.doneCallback) options.doneCallback(e);
       }
@@ -26,11 +26,13 @@ var util = (function(){
     }
 
     ajaxOptions.headers = {
-      "Authorization" : "Bearer " + access_token
+      "X-Parse-Application-Id" : "xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ",
+      "X-Parse-REST-API-Key" : "3YE60uKXf9Mdrs6bqMoT0IWfUWFpMcLfIUegaHL3"
     };
 
     $.ajax(ajaxOptions);
   }
+
 
   return {
     ajaxRequest: ajaxRequest
