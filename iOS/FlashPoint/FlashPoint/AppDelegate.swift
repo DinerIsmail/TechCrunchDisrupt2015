@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
-		
-		Parse.setApplicationId("xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ", clientKey: "your_client_key")
+
+		Parse.setApplicationId("xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ", clientKey: "vArKSdlwI3DAfPjEEiAbAyEZuUtK2sreuIZHBpaO")
 
         PFUser.enableAutomaticUser()
 
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-		
+
         //  Swift 2.0
         //
         //        if #available(iOS 8.0, *) {
