@@ -1,5 +1,6 @@
-var number
-var deleted = 0
+var number = 0;
+var deleted = 0;
+var containerWidth = 2000; //px
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -10,12 +11,12 @@ document.getElementById('back').addEventListener('click', function() {
     deleted = deleted + 1
 });
 
-
+var initialPositions = [];
 document.getElementById('add').addEventListener('click', function() {
     deleted = 0
-    number = $(".container").children().length + 1
+    number = $(".container").children().length + 1;
     var randomColor = Math.floor(Math.random() * 16777215).toString(16)
-    var offSet = number * 50;
+    var offSet = containerWidth - (number * 50);
     $(".container").append('<div id="p2" class="object"></div>');
     $('.container').each(function() {
         $(".container :nth-child(" + number + ")").css({
@@ -23,9 +24,8 @@ document.getElementById('add').addEventListener('click', function() {
             'marginLeft': offSet,
             'background': '#' + randomColor
         });
-        $(".container :nth-child(" + number + ")").fadeIn();
     });
-
+    initialPositions.push(offSet);
 }, false);
 
 function moveTheElems() {
@@ -34,8 +34,9 @@ function moveTheElems() {
     if (value < maxVal) {
         $('.object').each(function() {
             var curMargin = $(this).css("margin-left").replace("px", "");;
-            var updatedMargin = curMargin - 10;
+            var updatedMargin = curMargin - 40;
             $(this).css("marginLeft", updatedMargin);
+            console.log(initialPositions);
         });
         value++;
         $('#range').val(value);
@@ -46,7 +47,8 @@ var toggle;
 
 function toggleAnimation() {
     if (!toggle) {
-        toggle = window.setInterval(moveTheElems, 200);
+        toggle = window.setInterval(moveTheElems, 10);
+        //change the intercal val to change the fps
     } else {
         window.clearInterval(toggle);
         toggle = null;
@@ -61,14 +63,14 @@ var switchAnimationOn = function() {
     setInterval(moveTheElems, 200);
 }
 
-// var myVar = setInterval(moveTheElems, 200);
-
 function stopInterval() {
     clearInterval(switchAnimationOn);
 }
 
 function changeOffset(rangeValue) {
     $('.object').each(function() {
+        var initialOffSet = initialPositions[$(this).index()];
+        console.log(initialOffSet);
         var curMargin = $(this).css("margin-left").replace("px", "");;
         var updatedMargin = curMargin - 10;
         $(this).css("marginLeft", updatedMargin);
