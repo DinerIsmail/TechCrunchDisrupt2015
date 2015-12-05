@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA816B1A49DB6800E65899 /* Bolts.framework */; };
 		81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA816C1A49DB6800E65899 /* Parse.framework */; };
@@ -17,10 +16,13 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		9399A7341C13480800BE88A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7321C13480800BE88A5 /* AppDelegate.swift */; };
 		9399A7351C13480800BE88A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7331C13480800BE88A5 /* ViewController.swift */; };
+		9399A73B1C13566C00BE88A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399A7391C13566C00BE88A5 /* Main.storyboard */; };
+		9399A73D1C13627700BE88A5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A73C1C13627700BE88A5 /* Constants.swift */; };
+		9399A7411C13718B00BE88A5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7401C13718B00BE88A5 /* MenuViewController.swift */; };
+		9399A7441C1387E700BE88A5 /* takepicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 9399A7431C1387E700BE88A5 /* takepicture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BA81451A49DA1800E65899 /* FlashPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +37,10 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		9399A7321C13480800BE88A5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FlashPoint/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		9399A7331C13480800BE88A5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = FlashPoint/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		9399A73A1C13566C00BE88A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		9399A73C1C13627700BE88A5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = FlashPoint/Constants.swift; sourceTree = SOURCE_ROOT; };
+		9399A7401C13718B00BE88A5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = FlashPoint/MenuViewController.swift; sourceTree = SOURCE_ROOT; };
+		9399A7431C1387E700BE88A5 /* takepicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = takepicture.png; path = Graphics/takepicture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				9399A7421C1387D400BE88A5 /* Graphics */,
 				9399A7311C13460100BE88A5 /* FlashPoint */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -108,12 +115,22 @@
 		9399A7311C13460100BE88A5 /* FlashPoint */ = {
 			isa = PBXGroup;
 			children = (
+				9399A7391C13566C00BE88A5 /* Main.storyboard */,
 				9399A7321C13480800BE88A5 /* AppDelegate.swift */,
 				9399A7331C13480800BE88A5 /* ViewController.swift */,
-				814C3AC61B69877600E307BB /* Main.storyboard */,
+				9399A73C1C13627700BE88A5 /* Constants.swift */,
+				9399A7401C13718B00BE88A5 /* MenuViewController.swift */,
 			);
 			name = FlashPoint;
 			path = ParseStarterProject;
+			sourceTree = "<group>";
+		};
+		9399A7421C1387D400BE88A5 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				9399A7431C1387E700BE88A5 /* takepicture.png */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +192,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
+				9399A73B1C13566C00BE88A5 /* Main.storyboard in Resources */,
+				9399A7441C1387E700BE88A5 /* takepicture.png in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,19 +224,20 @@
 			files = (
 				9399A7351C13480800BE88A5 /* ViewController.swift in Sources */,
 				9399A7341C13480800BE88A5 /* AppDelegate.swift in Sources */,
+				9399A73D1C13627700BE88A5 /* Constants.swift in Sources */,
+				9399A7411C13718B00BE88A5 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		814C3AC61B69877600E307BB /* Main.storyboard */ = {
+		9399A7391C13566C00BE88A5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				814C3AC71B69877600E307BB /* Base */,
+				9399A73A1C13566C00BE88A5 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -314,6 +333,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parse.FlashPoint;
 				PRODUCT_NAME = FlashPoint;
@@ -333,6 +353,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parse.FlashPoint;
 				PRODUCT_NAME = FlashPoint;
