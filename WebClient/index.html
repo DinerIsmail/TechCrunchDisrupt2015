@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The HTML5 Herald</title>
+		<meta name="description" content="The HTML5 Herald">
+		<meta name="author" content="SitePoint">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/range-slider.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	</head>
+	<body>
+		<p><button id="add">Add</button></p>
+		<p><button id="back">Back</button></p>
+		<div class="container">
+			<div id="p2" class="object" style="margin-top: 128px; margin-left: 150px; -webkit-filter: blur(0.666667px); display: block; background: rgb(66, 7, 125);"></div>
+		</div>
+		<div class="buttons">
+			<div class="animate-button">
+				<p><button id="animate-on">Animate</button></p>
+				<!-- <p><button onclick="stopInterval()" id="animate-off">Stop animation</button></p> -->
+				<input id="range" type="range" min="0" max="100" value="0" onchange="changeOffset(value)">
+			</div>
+		</div>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

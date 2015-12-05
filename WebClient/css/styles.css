@@ -1,0 +1,22 @@
+.container{
+    height: 500px;
+    width: auto;
+}
+
+.animate-button {
+	display: inline;
+}
+.buttons {
+	text-align: center;
+}
+
+.animate-button p {
+	display: inline;
+	text-align: center;
+}
+
+.object{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
