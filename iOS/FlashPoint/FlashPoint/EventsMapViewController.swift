@@ -127,27 +127,6 @@ class EventsMapViewController: UIViewController, UIImagePickerControllerDelegate
 		}
 		return nil
 	}
-	
-	func mapItem() -> MKMapItem {
-	  //let addressDictionary = [String(kABPersonAddressStreetKey): subtitle]
-	  //let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
-			
-	  let mapItem = MKMapItem()
-	  mapItem.name = title
-			
-	  return mapItem
-	}
-	
-	func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-		let location = view.annotation as! EventAnnotation
-		//let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-		//location.mapItem().openInMapsWithLaunchOptions(launchOptions)
-		
-//		var center: CGPoint = CGPointMake()
-//		UIView.beginAnimations(nil, context: nil)
-//		UIView.setAnimationDuration(1.0)
-//		UIView.commitAnimations()
-	}
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Pass the selected object to the new view controller.

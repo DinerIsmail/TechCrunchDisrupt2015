@@ -15,23 +15,57 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <link href="dist/vis.css" rel="stylesheet" type="text/css" />
+
+
+  <style type="text/css">
+
+    .vis-item {
+      border-color: #426F42;
+      background-color: rgba(50,120,50, 0.8);
+      font-size: 15pt;
+      box-shadow: 1px 1px 5px rgba(128,128,128, 0.2);
+      border-radius: 20px;
+      color: #501010;
+    }
+
+    .vis-item,
+    .vis-item.vis-line {
+      border-width: 0px;
+    }
+
+    .vis-item.vis-dot {
+      border-width: 10px;
+      border-radius: 10px;
+    }
+
+    .vis-item.vis-selected {
+      border-color: green;
+      background-color: lightgreen;
+    }
+
+    
+    .vis-time-axis .vis-grid.vis-minor {
+      border-width: 0px;
+    }
+
+  </style>
+
 </head>
 <body>
 <div id="visualization"></div>
 
-<button id="fastBack">FastBackwards</button>
-<button id="play">Play</button>
-<button id="stop">Stop</button>
-<button id="fastForwards">FastForwards</button>
-<button id="live">Live</button>
 
-<br>
-
-<button id="fitAll">FitAll</button>
-
+<div id="buttonsContainer">
+  <input class="but" type="image" src="css/img/back.png" id="fastBack"></input>
+  <input class="but" type="image" src="css/img/play.png" id="play"></input>
+  <input class="but" type="image" src="css/img/stop.png" id="stop"></input>
+  <input class="but" type="image" src="css/img/forw.png" id="fastForwards"></input>
+  <input class="but" type="image" src="css/img/live.png" id="live"></input>
+  <input class="but" type="image" src="css/img/fit.png" id="fitAll"></input>
+</div>
 <script src="js/vis.min.js"></script>
     <script src="dist/vis.js"></script>
-
+    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/DataManager.js"></script>
     <script type="text/javascript" src="js/example.js"></script>
 

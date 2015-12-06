@@ -1,5 +1,7 @@
 // DOM element where the Timeline will be attached
 var container = document.getElementById('visualization');
+var timeline;
+var exista = false;
 
 // Items array
  items = new vis.DataSet({});
@@ -28,7 +30,9 @@ window.setInterval(function() {
   successCallback: function(data) {
 
   	if (data.results.length > elemOnStage){
-  		setData(data);	
+
+  		setData(data);
+
   	} 
     
   },
@@ -60,18 +64,20 @@ function setData(data) {
   }
 
   elemOnStage = data.results.length;
+
   console.log(elemOnStage);
 
   // Configuration for the Timeline
   var dataSetOptions = {
   	width: '100%',
-  	height: '700px',
+  	height: '600px',
+    maxHeight: '600px',
   	throttleRedraw: 1,
   	configure: false,
   	stack: true,
   	zoomMin: 60 * 1000,
   	zoomMax: 10 * 60 * 60 * 1000,
-
+    //min: Date(items.get(0).start).getTime() - 30 * 60 * 1000,
   	moveable: false,
 
 
@@ -105,9 +111,9 @@ function setData(data) {
     		html = '<div class="type2">'
     				
     				+
-    					'<video class="video" width = "320" height = "240" autoplay muted>'
+    					'<video id = "video' + item.id + '" class="video" width = "320" height = "240" muted>'
     				+
-    					'<source src="'+item.video+'" type="video/mp4">'
+    					'<source src="'+ item.video +'" type="video/mp4">'
     				+
     					'</video>'
     				+
@@ -125,8 +131,14 @@ function setData(data) {
 
   // Create a Timeline
   
-  var timeline = new vis.Timeline(container, items, dataSetOptions);
-
+  
+     
+  if (exista == false){
+    timeline = new vis.Timeline(container, items, dataSetOptions);
+    exista = true;  
+    console.log("timeline");
+  }
+  
   // Buttons
 
  document.getElementById('fastBack').onclick = function() {
@@ -156,7 +168,7 @@ function setData(data) {
   	timeline.fit({});
   };
 
-/*
+
   // Keep videos static
   function onRangeChange (properties) {
 
@@ -171,13 +183,50 @@ function setData(data) {
   			// Check if it should be playing:
   			var tempTime = new Date(items.get(index).initialTime);
 
+        var currentVideo = document.getElementById("video"+ index.toString());
+       // console.log(currentVideo);
+
   			if (tempTime.getTime() > properties.start.getTime() && tempTime.getTime() < properties.end.getTime()){
   				
-  				items.update({id: index, start : (properties.end.getTime() - properties.start.getTime()) / 2 + properties.start.getTime()});
+  				//items.update({id: index, start : (properties.end.getTime() - properties.start.getTime()) / 2 + properties.start.getTime()});
+          
 
-  			} else {
+          
 
-  				items.update({id: index, start : items.get(index).initialTime});
+          var videoTime = (((properties.end.getTime() - properties.start.getTime()) / 2 + properties.start.getTime()) - tempTime.getTime()) / 1000;
+
+          
+          if (runType == 1 || runType == 4){
+
+              // if the video should play just play it :D
+              currentVideo.play();
+          
+          } 
+          else 
+                   // Check if videoTime doesn't exceed the video lenght
+                    if (videoTime < currentVideo.duration && videoTime >= 0){
+
+                      console.log(videoTime);
+
+                      currentVideo.currentTime = videoTime;  
+
+                    } 
+                    else {
+
+                        currentVideo.pause();
+
+                    }
+
+                 
+         
+          
+
+  			   }
+            else {
+
+              // Just pause it
+             //currentVideo.pause();
+      				//items.update({id: index, start : items.get(index).initialTime});
 
   			}
   		}	
@@ -190,7 +239,7 @@ function setData(data) {
   // add event listener
   timeline.on('rangechange', onRangeChange);
 
-*/
+
 
 	
 

@@ -26,8 +26,8 @@ var util = (function(){
     }
 
     ajaxOptions.headers = {
-      "X-Parse-Application-Id" : "xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ",
-      "X-Parse-REST-API-Key" : "3YE60uKXf9Mdrs6bqMoT0IWfUWFpMcLfIUegaHL3"
+      "X-Parse-Application-Id" : "gUsGmcZRkybGab0Lw5idxugRlHqIP0Er7INzmMy0", //  "xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ",
+      "X-Parse-REST-API-Key" : "j5MyZng4vU4VrLndlGNdPTTk8jycEJCWqGB1ogtp" //"3YE60uKXf9Mdrs6bqMoT0IWfUWFpMcLfIUegaHL3"
     };
 
     $.ajax(ajaxOptions);
