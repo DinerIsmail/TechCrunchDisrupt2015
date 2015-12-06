@@ -6,6 +6,7 @@
 		<meta name="description" content="The HTML5 Herald">
 		<meta name="author" content="SitePoint">
 		<link rel="stylesheet" href="css/styles.css">
+<<<<<<< HEAD
 		<link rel="stylesheet" href="css/range-slider.css">
 		<link href="css/vis.min.css" rel="stylesheet" type="text/css" />
 		<!-- Latest compiled and minified CSS -->
@@ -13,6 +14,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		
 		
+=======
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+>>>>>>> origin/master
 	</head>
 	<body>
 
@@ -25,10 +30,13 @@
 		</div>
 		<div class="buttons">
 			<div class="animate-button">
-				<p><button id="animate-on" class="btn btn-lg btn-default" onclick="addObject()">Animate</button></p>
-				<input id="range" type="range" min="0" max="100" value="0" onchange="changeOffset(value)">
+				<p><button id="animate-on" class="btn btn-lg btn-default" onclick="setOffSet(100)">Animate</button></p>
+				<div class="range-slider">
+				    <input class="input-range" oninput="changeOffset(value)" type="range" value="0" min="0" max="100">
+				</div> 
 			</div>
 		</div>
+<<<<<<< HEAD
 		<script type="text/javascript">
 			
 		var container = document.getElementById('vizualization');
@@ -52,11 +60,18 @@
 		</script>
 
 		<script src="js/vis.min.js"></script>
+=======
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+>>>>>>> origin/master
 		<script type="text/javascript" src="js/script.js"></script>
 		<script type="text/javascript" src="js/DataManager.js"></script>
 		<script type="text/javascript" src="js/example.js"></script>
 
 		<!-- Latest compiled and minified JavaScript -->
+<<<<<<< HEAD
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+=======
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+>>>>>>> origin/master
 	</body>
 </html>

@@ -56,7 +56,8 @@ function toggleAnimation() {
 }
 
 $("#animate-on").click(function() {
-    toggleAnimation();
+    //toggleAnimation();
+    //setOffSet(100);
 });
 
 var switchAnimationOn = function() {
@@ -67,7 +68,12 @@ function stopInterval() {
     clearInterval(switchAnimationOn);
 }
 
+function setOffSet(rangeOffSetValue) {
+    $('.input-range').val(rangeOffSetValue);
+}
+
 function changeOffset(rangeValue) {
+    console.log(rangeValue);
     $('.object').each(function() {
         var initialOffSet = initialPositions[$(this).index()];
         console.log(initialOffSet);
@@ -76,3 +82,12 @@ function changeOffset(rangeValue) {
         $(this).css("marginLeft", updatedMargin);
     });
 }
+
+var range = $('.input-range'),
+    value = $('.range-value');
+    
+value.html(range.attr('value'));
+
+range.on('input', function(){
+    value.html(this.value);
+}); 

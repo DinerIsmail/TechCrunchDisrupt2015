@@ -1,99 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bpS-ml-QyH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="6C3-06-UNu">
-            <objects>
-                <viewController id="N5h-Qb-57F" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MOz-L2-501"/>
-                        <viewControllerLayoutGuide type="bottom" id="W0T-BT-dll"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="acw-Jf-65l">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bk0-Hc-V2R"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3TF-e0-0D1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-967.5" y="214"/>
-        </scene>
-        <!--View Controller1-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lys-rs-18h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXw-vK-51A">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="488"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPs-c0-u52">
-                                        <rect key="frame" x="26" y="308" width="279" height="38"/>
-                                        <animations/>
-                                        <state key="normal" title="Take Photo" image="takepicture.png"/>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="leF-a6-Oh2">
-                                        <rect key="frame" x="162" y="457" width="143" height="30"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No of Sockets: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dp6-4X-coS">
-                                        <rect key="frame" x="26" y="459" width="117" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="952-lV-oGV">
-                                        <rect key="frame" x="25" y="26" width="280" height="280"/>
-                                        <animations/>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Describe the socket..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ogc-bB-r0r">
-                                        <rect key="frame" x="26" y="353" width="280" height="97"/>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="light" returnKeyType="done"/>
-                                    </textView>
-                                </subviews>
-                                <animations/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXe-yf-LDE">
-                                <rect key="frame" x="0.0" y="488" width="89" height="80"/>
-                                <animations/>
-                                <state key="normal" title="Back"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxX-Ip-lJQ">
-                                <rect key="frame" x="124" y="491" width="73" height="73"/>
-                                <animations/>
-                                <state key="normal" image="Button.png"/>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="763.5" y="329"/>
-        </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="yIy-zM-yMy">
             <objects>
-                <viewController id="TSQ-Jm-gqW" customClass="ViewController" customModule="FlashPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="TSQ-Jm-gqW" customClass="DetailsViewController" customModule="FlashPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="doS-Ve-8JF"/>
                         <viewControllerLayoutGuide type="bottom" id="BZ7-W7-m8q"/>
@@ -102,66 +18,151 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHl-iU-kFp">
-                                <rect key="frame" x="0.0" y="488" width="89" height="80"/>
-                                <animations/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="TSQ-Jm-gqW" eventType="touchUpInside" id="nDg-Cx-ETY"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhQ-DC-HlH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="488"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhQ-DC-HlH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="495"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNP-tS-YBd">
-                                        <rect key="frame" x="26" y="308" width="279" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bsz-x4-gkK">
+                                        <rect key="frame" x="8" y="26" width="304" height="349"/>
                                         <animations/>
-                                        <state key="normal" title="Take Photo" image="takepicture.png"/>
-                                        <connections>
-                                            <action selector="takePhoto:" destination="TSQ-Jm-gqW" eventType="touchUpInside" id="rbx-1D-tOU"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bsz-x4-gkK">
-                                        <rect key="frame" x="25" y="26" width="280" height="280"/>
-                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="349" id="cmU-vr-u5Y"/>
+                                        </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Describe..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xBY-RK-wYu">
-                                        <rect key="frame" x="26" y="353" width="280" height="97"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Describe what you're seeing..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-4z-ctZ">
+                                        <rect key="frame" x="8" y="383" width="304" height="30"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="light" returnKeyType="done"/>
-                                    </textView>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstItem="Igv-4z-ctZ" firstAttribute="trailing" secondItem="bsz-x4-gkK" secondAttribute="trailing" id="4x9-GK-QCI"/>
+                                    <constraint firstItem="bsz-x4-gkK" firstAttribute="leading" secondItem="FhQ-DC-HlH" secondAttribute="leadingMargin" id="5bt-Kl-GJL"/>
+                                    <constraint firstItem="bsz-x4-gkK" firstAttribute="top" secondItem="FhQ-DC-HlH" secondAttribute="top" constant="26" id="7zd-ey-ccB"/>
+                                    <constraint firstItem="bsz-x4-gkK" firstAttribute="centerX" secondItem="FhQ-DC-HlH" secondAttribute="centerX" id="CeY-3B-HFr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Igv-4z-ctZ" secondAttribute="bottom" constant="82" id="N71-Gh-umx"/>
+                                    <constraint firstItem="Igv-4z-ctZ" firstAttribute="top" secondItem="bsz-x4-gkK" secondAttribute="bottom" constant="8" symbolic="YES" id="Qdl-Wd-pi0"/>
+                                    <constraint firstItem="Igv-4z-ctZ" firstAttribute="trailing" secondItem="FhQ-DC-HlH" secondAttribute="trailingMargin" id="dCJ-uy-RXe"/>
+                                    <constraint firstItem="Igv-4z-ctZ" firstAttribute="leading" secondItem="bsz-x4-gkK" secondAttribute="leading" id="q6D-9y-ldx"/>
+                                </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZg-RZ-QR9">
-                                <rect key="frame" x="124" y="491" width="73" height="73"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-zr-ew1">
+                                <rect key="frame" x="0.0" y="495" width="320" height="73"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZg-RZ-QR9">
+                                        <rect key="frame" x="124" y="0.0" width="73" height="73"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="CuD-8t-yAA"/>
+                                        </constraints>
+                                        <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="uploadPicture:" destination="TSQ-Jm-gqW" eventType="touchUpInside" id="pdP-Il-Fk6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHl-iU-kFp">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="73"/>
+                                        <animations/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <segue destination="bpS-ml-QyH" kind="presentation" id="RPP-mH-gga"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <state key="normal" image="Button.png"/>
-                                <connections>
-                                    <action selector="goBack:" destination="TSQ-Jm-gqW" eventType="touchUpInside" id="Jqv-bE-agY"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="47U-kg-kff"/>
+                                    <constraint firstItem="dZg-RZ-QR9" firstAttribute="centerX" secondItem="bZR-zr-ew1" secondAttribute="centerX" id="6jZ-Rp-WjX"/>
+                                    <constraint firstItem="dZg-RZ-QR9" firstAttribute="top" secondItem="bZR-zr-ew1" secondAttribute="top" id="ZhB-l9-lbs"/>
+                                    <constraint firstAttribute="bottom" secondItem="dZg-RZ-QR9" secondAttribute="bottom" id="tkc-LL-Dcm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FhQ-DC-HlH" secondAttribute="trailing" id="8l0-tZ-ihc"/>
+                            <constraint firstAttribute="trailing" secondItem="bZR-zr-ew1" secondAttribute="trailing" id="FoH-uB-OIC"/>
+                            <constraint firstItem="FhQ-DC-HlH" firstAttribute="top" secondItem="5Yd-NS-Ka5" secondAttribute="top" id="dmK-sq-Ubv"/>
+                            <constraint firstItem="FhQ-DC-HlH" firstAttribute="leading" secondItem="5Yd-NS-Ka5" secondAttribute="leading" id="eFF-2j-LoS"/>
+                            <constraint firstItem="BZ7-W7-m8q" firstAttribute="top" secondItem="bZR-zr-ew1" secondAttribute="bottom" id="fJF-H5-ZJu"/>
+                            <constraint firstItem="bZR-zr-ew1" firstAttribute="leading" secondItem="5Yd-NS-Ka5" secondAttribute="leading" id="laB-lv-vXn"/>
+                            <constraint firstItem="bZR-zr-ew1" firstAttribute="top" secondItem="FhQ-DC-HlH" secondAttribute="bottom" id="qyr-xq-X8P"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="DescriptionView" destination="xBY-RK-wYu" id="g7b-Kz-91T"/>
-                        <outlet property="PictureView" destination="bsz-x4-gkK" id="lLg-Mb-40S"/>
-                        <outlet property="Scroller" destination="FhQ-DC-HlH" id="96k-hb-M9M"/>
-                        <outlet property="SendButton" destination="dZg-RZ-QR9" id="Hvk-11-TAG"/>
+                        <outlet property="descriptionTextField" destination="Igv-4z-ctZ" id="YKm-ex-DQM"/>
+                        <outlet property="imageToUploadView" destination="bsz-x4-gkK" id="jXW-RC-3dV"/>
+                        <outlet property="scrollView" destination="FhQ-DC-HlH" id="gKv-NX-lM0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dra-9I-7fH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.5" y="292"/>
+            <point key="canvasLocation" x="28" y="292"/>
+        </scene>
+        <!--Events Map View Controller-->
+        <scene sceneID="olq-uL-TVk">
+            <objects>
+                <viewController storyboardIdentifier="EventsMapViewController" id="bpS-ml-QyH" customClass="EventsMapViewController" customModule="FlashPoint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b8j-x0-ixW"/>
+                        <viewControllerLayoutGuide type="bottom" id="apc-hR-E8P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o4l-oD-2fa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebA-NL-q50">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjK-OC-UtD">
+                                        <rect key="frame" x="125" y="0.0" width="70" height="70"/>
+                                        <animations/>
+                                        <state key="normal" backgroundImage="UseCamera"/>
+                                        <connections>
+                                            <action selector="useCamera:" destination="bpS-ml-QyH" eventType="touchUpInside" id="qph-ct-Gtd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="nwK-Sq-ges"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ING-Od-vRk">
+                                <rect key="frame" x="0.0" y="20" width="320" height="470"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ebA-NL-q50" secondAttribute="trailing" id="7I6-FJ-Bcj"/>
+                            <constraint firstAttribute="trailing" secondItem="ING-Od-vRk" secondAttribute="trailing" id="KBl-AS-ly2"/>
+                            <constraint firstItem="apc-hR-E8P" firstAttribute="top" secondItem="ebA-NL-q50" secondAttribute="bottom" id="Md7-jG-Nxo"/>
+                            <constraint firstItem="ebA-NL-q50" firstAttribute="top" secondItem="ING-Od-vRk" secondAttribute="bottom" constant="8" id="Su2-ZZ-8mT"/>
+                            <constraint firstItem="ING-Od-vRk" firstAttribute="top" secondItem="b8j-x0-ixW" secondAttribute="bottom" id="eqi-tl-jjG"/>
+                            <constraint firstItem="ING-Od-vRk" firstAttribute="leading" secondItem="o4l-oD-2fa" secondAttribute="leading" id="mAM-hM-uH8"/>
+                            <constraint firstItem="ebA-NL-q50" firstAttribute="leading" secondItem="o4l-oD-2fa" secondAttribute="leading" id="wJ5-T3-9sC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="ING-Od-vRk" id="OZi-KU-DI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1XX-4M-AIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-626" y="308"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Button.png" width="642" height="642"/>
-        <image name="takepicture.png" width="1096" height="207"/>
+        <image name="UseCamera" width="512" height="512"/>
     </resources>
 </document>
