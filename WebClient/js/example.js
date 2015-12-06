@@ -145,6 +145,7 @@ function setData(data) {
   };
 
   document.getElementById('fitAll').onclick = function() {
+  	runType = 2;
   	timeline.fit({});
   };
 
