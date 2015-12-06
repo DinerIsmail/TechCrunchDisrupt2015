@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ParseCrashReporting.enable()
 
 		Parse.setApplicationId("xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ", clientKey: "vArKSdlwI3DAfPjEEiAbAyEZuUtK2sreuIZHBpaO")
-
+//AppId: gUsGmcZRkybGab0Lw5idxugRlHqIP0Er7INzmMy0
+//Client: 42Ypr1Sgo0FrRn14ozsLfN9W7KIPjfKJszOEZe6j
         PFUser.enableAutomaticUser()
 
         let defaultACL = PFACL();
