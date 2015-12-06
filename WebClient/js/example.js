@@ -6,12 +6,18 @@ var container = document.getElementById('visualization');
  var elemOnStage = 0;
 
 // Animation variables
-var run = true;
-var runLive = false;
-
+var runType = 2;
+// runType mapping: 
+// 0 - fast backwards
+// 1 - play
+// 2 - stop
+// 3 - fast forwards
+// 4 - live
 
 // Animation speed in ms per frame
 var timeFrame = 100;
+var playSpeed = 30000;
+var fastSpeed = playSpeed * 10;
 
 window.setInterval(function() {
 	util.ajaxRequest({
@@ -28,7 +34,7 @@ window.setInterval(function() {
     console.log("There is an error" + e);
   }
 })
-	console.log("New call");
+	//console.log("New call");
 }, 1000);
 
 function setData(data) {  
@@ -55,11 +61,14 @@ function setData(data) {
   console.log(elemOnStage);
 
   // Configuration for the Timeline
-  dataSetOptions = {
+  var dataSetOptions = {
   	width: '100%',
   	height: '700px',
   	configure: false,
   	stack: true,
+
+  	moveable: false,
+
 
   	template: function (item) {
 
@@ -115,21 +124,34 @@ function setData(data) {
 
   // Buttons
 
+ document.getElementById('fastBack').onclick = function() {
+  	runType = 0;
+  };
+
   document.getElementById('play').onclick = function() {
-  	run = true;
+  	runType = 1;
   };
 
   document.getElementById('stop').onclick = function() {
-  	run = false;
-  	runLive = false;
+  	runType = 2;
+  };
+
+ document.getElementById('fastForwards').onclick = function() {
+  	runType = 3;
   };
 
   document.getElementById('live').onclick = function() {
-  	runLive = true;
+  	runType = 4;
+  };
+
+  document.getElementById('fitAll').onclick = function() {
+  	timeline.fit({});
   };
 
 
+
 	
+
 	// Animate the darn thing
 	window.setInterval(function() {
 
@@ -138,27 +160,55 @@ function setData(data) {
 		if (elemOnStage > 0 ){
 			var d = new Date();
 
-			// If live:
-			if (runLive == true){
+			switch (runType){
+				// fast backwards:
+				case 0:
 
-				// First go there FAST
-				timeline.moveTo(d.getTime(), {animation: false});
+					// Don't let the user move it!
+					timeline.setOptions({moveable: false});
 
-				timeline.moveTo(d.getTime(), {duration:100, easingFunction:"linear"});
+					timeline.setWindow(timeline.getWindow().start.getTime() - fastSpeed, timeline.getWindow().end.getTime() - fastSpeed, {});
 
-			// Not live but playing	
-			} else if (run == true){
+					break;
 
+				// play:
+				case 1:
+					// Don't let the user move it!
+					timeline.setOptions({moveable: false});
 
-				timeline.setWindow(timeline.getWindow().start.getTime() + 30000, timeline.getWindow().end.getTime() + 30000, {});
-				
+					timeline.setWindow(timeline.getWindow().start.getTime() + playSpeed, timeline.getWindow().end.getTime() + playSpeed, {});
 
-			} else if (run == false){
+					break;
 
-				// Stopped, let the people move it
+				// stop:
+				case 2:
+					// Stopped, let the people move it
+					timeline.setOptions({moveable: true});
+
+					break;
+
+				// fast forwards:
+				case 3:
+					// Don't let the user move it!
+					timeline.setOptions({moveable: false});
+
+					timeline.setWindow(timeline.getWindow().start.getTime() + fastSpeed, timeline.getWindow().end.getTime() + fastSpeed, {});
+
+					break;
+
+				// live:
+				case 4:
+					// Don't let the user move it!
+					timeline.setOptions({moveable: false});
+
+					// First go there FAST
+					timeline.moveTo(d.getTime(), {animation: false});
+
+					timeline.moveTo(d.getTime(), {duration:100, easingFunction:"linear"});
+
+					break;
 
 			}
-
 		}
 
 
