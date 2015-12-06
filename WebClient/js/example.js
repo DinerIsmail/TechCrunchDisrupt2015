@@ -2,7 +2,7 @@
 var container = document.getElementById('visualization');
 
 // Items array
- var items = new vis.DataSet({});
+ items = new vis.DataSet({});
  var elemOnStage = 0;
 
 // Animation variables
@@ -16,8 +16,8 @@ var runType = 2;
 
 // Animation speed in ms per frame
 var timeFrame = 100;
-var playSpeed = 30000;
-var fastSpeed = playSpeed * 10;
+var playSpeed = 1000;
+var fastSpeed = playSpeed * 10 * 60;
 
 window.setInterval(function() {
 	util.ajaxRequest({
@@ -52,7 +52,7 @@ function setData(data) {
   			break;
 
   		case 2:
-  			items.add( {id:i, description: data.results[i].flashPointDescription, video: data.results[i].video.url ,start: data.results[i].flashPointDate.iso, flashType: 2} );
+  			items.add( {id:i, description: data.results[i].flashPointDescription, video: data.results[i].video.url ,start: data.results[i].flashPointDate.iso, initialTime: data.results[i].flashPointDate.iso, flashType: 2} );
   			break;
   	}
   }
@@ -64,8 +64,11 @@ function setData(data) {
   var dataSetOptions = {
   	width: '100%',
   	height: '700px',
+  	throttleRedraw: 20,
   	configure: false,
   	stack: true,
+  	zoomMin: 10 * 60 * 1000,
+  	zoomMax: 10 * 60 * 60 * 1000,
 
   	moveable: false,
 
@@ -149,7 +152,41 @@ function setData(data) {
   	timeline.fit({});
   };
 
+/*
+  // Keep videos static
+  function onRangeChange (properties) {
 
+  	//console.log(properties.start.getTime());
+  	//console.log(properties.end.getTime());
+
+  	for (var index = 0; index < items.length; index++){
+  		
+  		// Check if video
+  		if (items.get(index).flashType == 2){
+
+  			// Check if it should be playing:
+  			var tempTime = new Date(items.get(index).initialTime);
+
+  			if (tempTime.getTime() > properties.start.getTime() && tempTime.getTime() < properties.end.getTime()){
+  				
+  				items.update({id: index, start : (properties.end.getTime() - properties.start.getTime()) / 2 + properties.start.getTime()});
+
+  			} else {
+
+  				items.update({id: index, start : items.get(index).initialTime});
+
+  			}
+  		}	
+  	
+  	}
+  
+  }
+
+
+  // add event listener
+  timeline.on('rangechange', onRangeChange);
+
+*/
 
 	
 
@@ -205,7 +242,7 @@ function setData(data) {
 					// First go there FAST
 					timeline.moveTo(d.getTime(), {animation: false});
 
-					timeline.moveTo(d.getTime(), {duration:100, easingFunction:"linear"});
+					timeline.moveTo(d.getTime(), {duration: 100, easingFunction:"linear"});
 
 					break;
 
