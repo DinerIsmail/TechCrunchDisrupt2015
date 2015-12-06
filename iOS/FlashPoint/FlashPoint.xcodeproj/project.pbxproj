@@ -14,9 +14,13 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
+		9300D1BB1C14145C004FD522 /* PostTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9300D1BA1C14145C004FD522 /* PostTextViewController.swift */; };
+		9300D1BD1C141C4C004FD522 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300D1BC1C141C4B004FD522 /* CoreLocation.framework */; };
+		9300D1BF1C141C55004FD522 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300D1BE1C141C55004FD522 /* Security.framework */; };
+		9300D1C11C141C62004FD522 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300D1C01C141C62004FD522 /* MobileCoreServices.framework */; };
+		9300D1C31C141D80004FD522 /* GeotriggerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9300D1C21C141D80004FD522 /* GeotriggerSDK.framework */; };
 		9399A7341C13480800BE88A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7321C13480800BE88A5 /* AppDelegate.swift */; };
 		9399A7351C13480800BE88A5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7331C13480800BE88A5 /* DetailsViewController.swift */; };
-		9399A73D1C13627700BE88A5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A73C1C13627700BE88A5 /* Constants.swift */; };
 		9399A74A1C138F0900BE88A5 /* EventsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399A7491C138F0900BE88A5 /* EventsMapViewController.swift */; };
 		9399A74B1C139B1F00BE88A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399A7391C13566C00BE88A5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -34,10 +38,15 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		9300D1BA1C14145C004FD522 /* PostTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTextViewController.swift; path = FlashPoint/PostTextViewController.swift; sourceTree = SOURCE_ROOT; };
+		9300D1BC1C141C4B004FD522 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9300D1BE1C141C55004FD522 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9300D1C01C141C62004FD522 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9300D1C21C141D80004FD522 /* GeotriggerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GeotriggerSDK.framework; sourceTree = "<group>"; };
+		9300D1C41C1421BF004FD522 /* FlashPoint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashPoint-Bridging-Header.h"; sourceTree = "<group>"; };
 		9399A7321C13480800BE88A5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FlashPoint/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		9399A7331C13480800BE88A5 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = FlashPoint/DetailsViewController.swift; sourceTree = SOURCE_ROOT; };
 		9399A73A1C13566C00BE88A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		9399A73C1C13627700BE88A5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = FlashPoint/Constants.swift; sourceTree = SOURCE_ROOT; };
 		9399A7491C138F0900BE88A5 /* EventsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsMapViewController.swift; path = FlashPoint/EventsMapViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -46,12 +55,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9300D1C11C141C62004FD522 /* MobileCoreServices.framework in Frameworks */,
+				9300D1BF1C141C55004FD522 /* Security.framework in Frameworks */,
+				9300D1BD1C141C4C004FD522 /* CoreLocation.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
 				81BA81771A49E0D500E65899 /* libsqlite3.dylib in Frameworks */,
 				81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
+				9300D1C31C141D80004FD522 /* GeotriggerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +101,10 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9300D1C21C141D80004FD522 /* GeotriggerSDK.framework */,
+				9300D1C01C141C62004FD522 /* MobileCoreServices.framework */,
+				9300D1BE1C141C55004FD522 /* Security.framework */,
+				9300D1BC1C141C4B004FD522 /* CoreLocation.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
 				81BA816D1A49DB6800E65899 /* ParseCrashReporting.framework */,
@@ -117,10 +134,10 @@
 				9399A7321C13480800BE88A5 /* AppDelegate.swift */,
 				9399A7491C138F0900BE88A5 /* EventsMapViewController.swift */,
 				9399A7331C13480800BE88A5 /* DetailsViewController.swift */,
-				9399A73C1C13627700BE88A5 /* Constants.swift */,
+				9300D1BA1C14145C004FD522 /* PostTextViewController.swift */,
+				9300D1C41C1421BF004FD522 /* FlashPoint-Bridging-Header.h */,
 			);
-			name = FlashPoint;
-			path = ParseStarterProject;
+			path = FlashPoint;
 			sourceTree = "<group>";
 		};
 		9399A7421C1387D400BE88A5 /* Graphics */ = {
@@ -221,8 +238,8 @@
 			files = (
 				9399A7351C13480800BE88A5 /* DetailsViewController.swift in Sources */,
 				9399A7341C13480800BE88A5 /* AppDelegate.swift in Sources */,
+				9300D1BB1C14145C004FD522 /* PostTextViewController.swift in Sources */,
 				9399A74A1C138F0900BE88A5 /* EventsMapViewController.swift in Sources */,
-				9399A73D1C13627700BE88A5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,9 +339,12 @@
 		81BA81651A49DA1800E65899 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -332,8 +352,16 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-liconv",
+					"-lcharset",
+					"-lxml2.2",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.parse.FlashPoint;
 				PRODUCT_NAME = FlashPoint;
+				SWIFT_OBJC_BRIDGING_HEADER = "FlashPoint/FlashPoint-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -342,9 +370,12 @@
 		81BA81661A49DA1800E65899 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -352,8 +383,16 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-liconv",
+					"-lcharset",
+					"-lxml2.2",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.parse.FlashPoint;
 				PRODUCT_NAME = FlashPoint;
+				SWIFT_OBJC_BRIDGING_HEADER = "FlashPoint/FlashPoint-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

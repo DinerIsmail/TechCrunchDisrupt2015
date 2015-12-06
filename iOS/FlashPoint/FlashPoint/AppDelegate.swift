@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
 import Parse
+
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -32,7 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
 
-		Parse.setApplicationId("xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ", clientKey: "vArKSdlwI3DAfPjEEiAbAyEZuUtK2sreuIZHBpaO")
+		Parse.setApplicationId("gUsGmcZRkybGab0Lw5idxugRlHqIP0Er7INzmMy0", clientKey: "42Ypr1Sgo0FrRn14ozsLfN9W7KIPjfKJszOEZe6j")
+//TESTING
+//AppId: xKchtsJYcrBTan4IcSTclsiC8iStBqLapaL4ifMQ
+//Client: vArKSdlwI3DAfPjEEiAbAyEZuUtK2sreuIZHBpaO
+
+//PRODUCTION
 //AppId: gUsGmcZRkybGab0Lw5idxugRlHqIP0Er7INzmMy0
 //Client: 42Ypr1Sgo0FrRn14ozsLfN9W7KIPjfKJszOEZe6j
         PFUser.enableAutomaticUser()
@@ -59,7 +64,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
+		
+		// ArcGIS Geotriggering
+//		[AGSGTGeotriggerManager setupWithClientId:kClientId isProduction:NO tags:@[@"test"] isOffline:YES completion:^(NSError *error) {
+//			if (error != nil) {
+//				NSLog(@"Geotrigger Service setup encountered error: %@", error);
+//			} else {
+//				NSLog(@"Geotrigger Service ready to go!");
+//				
+//				// Turn on location tracking in adaptive mode
+//				[AGSGTGeotriggerManager sharedManager].trackingProfile = kAGSGTTrackingProfileAdaptive;
+//			}
+//		}];
 
+		AGSGTGeotriggerManager.setupWithClientId("VO8CyLsD8JCpWpbM", isProduction: false, tags: ["TechCrunch"], isOffline: true) { (error) -> Void in
+			if error != nil {
+				print("Geotrigger Service setup encountered error")
+			} else {
+				print("Geotrigger Service ready to go!")
+			}
+			
+			AGSGTGeotriggerManager.sharedManager().trackingProfile = kAGSGTTrackingProfileAdaptive
+		}
 
         //  Swift 2.0
         //
@@ -81,7 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
+		AGSGTGeotriggerManager.sharedManager().registerAPNSDeviceToken(deviceToken, completion: nil)
+		
+		let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
 
@@ -95,6 +123,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+		print("Failed to register for remote notifications")
+		
         if error.code == 3010 {
             print("Push notifications are not supported in the iOS Simulator.\n")
         } else {

@@ -21,10 +21,12 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var imageToUploadView: UIImageView!
 	@IBOutlet weak var descriptionTextField: UITextField!
-	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.activityIndicator.stopAnimating()
 		
 		// Dealing with the Scroll View
 		scrollView.contentInset = UIEdgeInsetsMake(0, 0, 300, 0);
@@ -42,26 +44,27 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 		self.locationManager?.delegate = self
 		self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
 		self.locationManager?.startUpdatingLocation()
-		
-		// Set up activity indicator
-		
 	}
 	
 	public override func viewDidAppear(animated: Bool) {
 		if let currentPhoto = self.currentPhoto {
 			imageToUploadView.image = currentPhoto
+		} else {
+			imageToUploadView.image = UIImage(named: "Placeholder")
 		}
 	}
 
 	@IBAction func uploadPicture(sender: AnyObject) {
 		func uploadFlashPoint(flashPoint: AnyObject, flashPointType: Int) {
+			self.activityIndicator.startAnimating()
+			
 			let flashPointToSend = PFObject(className: "flashPoint")
 			flashPointToSend["flashPointDescription"] = descriptionTextField.text
 			flashPointToSend["flashPointType"] = flashPointType
 			flashPointToSend["flashPointDate"] = NSDate()
 			
 			if flashPointType == 1 {
-				let resizedImage =  ResizeImage(self.imageToUploadView.image!, targetSize: CGSizeMake(150,200));
+				let resizedImage =  ResizeImage(self.imageToUploadView.image!, targetSize: CGSizeMake(640,360));
 				flashPointToSend["image"] = PFFile(name: NSUUID().UUIDString + ".jpg", data: UIImageJPEGRepresentation(resizedImage, 0.5)!)
 			} else if flashPointType == 2 {
 				flashPointToSend["video"] = PFFile(name: NSUUID().UUIDString + ".mp4", data: self.currentVideo!)
@@ -77,11 +80,12 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 			flashPointToSend.saveInBackgroundWithBlock({ (success, error) -> Void in
 				if success == true {
 					print("FlashPoint uploaded with ID: \(flashPointToSend.objectId)")
+					self.activityIndicator.stopAnimating()
+					self.dismissViewControllerAnimated(true, completion: nil)
 				} else {
 					print("FlashPoint upload failed")
 				}
 			})
-			
 		}
 		
 		if let photo = self.currentPhoto {
@@ -89,8 +93,6 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 		} else if let video = self.currentVideo {
 			uploadFlashPoint(video, flashPointType: 2)
 		}
-		
-		
 	}
 	
 	// Keyboard
