@@ -41,3 +41,14 @@ html,body{ margin:0; padding:0 !important; height:100%; width:100%; }
     width: 100px;
     position: absolute;
 }
+
+.type1{
+
+    width: 240px;
+}
+
+.image{
+
+    height: 160px;
+    width: 240px;
+}

@@ -7,11 +7,17 @@
 		<meta name="author" content="SitePoint">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/range-slider.css">
+		<link href="css/vis.min.css" rel="stylesheet" type="text/css" />
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
+		
 	</head>
 	<body>
+
+	<div id= "vizualization"></div>
+
 		<div class="page-header">
 		  <h1>TechCrunch Disrupt 2015</small></h1>
 		</div>
@@ -23,14 +29,34 @@
 				<input id="range" type="range" min="0" max="100" value="0" onchange="changeOffset(value)">
 			</div>
 		</div>
+		<script type="text/javascript">
+			
+		var container = document.getElementById('vizualization');
+
+		  // Create a DataSet (allows two way data-binding)
+		  var items = new vis.DataSet([
+		    {id: 1, content: 'item 1', start: '2013-04-20'},
+		    {id: 2, content: 'item 2', start: '2013-04-14'},
+		    {id: 3, content: 'item 3', start: '2013-04-18'},
+		    {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+		    {id: 5, content: 'item 5', start: '2013-04-25'},
+		    {id: 6, content: 'item 6', start: '2013-04-27'}
+		  ]);
+
+		  // Configuration for the Timeline
+		  var options = {};
+
+		  // Create a Timeline
+		  var timeline = new vis.Timeline(container, items, options);
+
+		</script>
+
+		<script src="js/vis.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
-<<<<<<< HEAD
 		<script type="text/javascript" src="js/DataManager.js"></script>
 		<script type="text/javascript" src="js/example.js"></script>
-=======
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
->>>>>>> origin/master
 	</body>
 </html>

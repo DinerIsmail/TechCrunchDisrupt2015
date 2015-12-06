@@ -1,106 +1,134 @@
-util.ajaxRequest({
+// DOM element where the Timeline will be attached
+var container = document.getElementById('visualization');
+
+// Items array
+ var items = new vis.DataSet({});
+ var elemOnStage = 0;
+
+
+
+window.setInterval(function() {
+	util.ajaxRequest({
   method: "GET",
   url: "flashPoint",
   successCallback: function(data) {
-    insertData(data);
+
+  	if (data.results.length > elemOnStage){
+  		setData(data);	
+  	} 
+    
   },
   errorCallback: function(e) {
     console.log("There is an error" + e);
   }
-});
+})
+	console.log("New call");
+}, 1000);
 
-function insertData(data) {
-	number = $(".container").children().length;
-    console.log( number );
-    console.log( data.results.length );
-    var i;
-	for( i = number; i < data.results.length; i++ ){
+function setData(data) {  
+  
 
-		switch( data.results[i].flashPointType){
+  for(var i = elemOnStage; i<data.results.length; i++){
 
-			case 0:
+  	switch( data.results[i].flashPointType){
+  		case 0:
+  			items.add( {id:i, description: data.results[i].flashPointDescription, start: data.results[i].flashPointDate.iso, flashType: 0} );
+  			break;
 
-				$(".container").append(
+  		case 1:
+  			items.add( {id:i, description: data.results[i].flashPointDescription, image: data.results[i].image.url ,start: data.results[i].flashPointDate.iso, flashType: 1} );
+  			break;
 
-					'<div class="flashPointDiv template1" >'
-					+
-						data.results[i].flashPointDescription
-					+
-					'</div>'
-				);
-				break;
+  		case 2:
+  			items.add( {id:i, description: data.results[i].flashPointDescription, video: data.results[i].video.url ,start: data.results[i].flashPointDate.iso, flashType: 2} );
+  			break;
+  	}
+  }
 
-			case 1:
+  elemOnStage = data.results.length;
+  console.log(elemOnStage);
 
-				$(".container").append(
+  // Configuration for the Timeline
+  dataSetOptions = {
+  	width: '100%',
+  	height: '700px',
+  	configure: false,
 
-						'<div class="flashPointDiv template2" >'
-							+
-								data.results[i].flashPointDescription
-							+
-							'<img src="' 
-							+ 
-								data.results[i].image.url 
-							+ 
-							'"></img>' 
-							+
-						'</div>'
+  	template: function (item) {
 
-					);
-				break;
+    var html;
+    
+    switch( item.flashType ){
 
-			case 2:
+    	case 0:
+    		html = '<div class="type0">'
+    				+
+    				item.description
+    				+
+    				'</div>';
+    		break;
 
-				$(".container").append(
+    	case 1:
+    		html = '<div class="type1">'
+    				+
+    					'<img class="image" src="'+item.image+'"></img>'
+    				+
+    					'<br>'
+    				+
+    					item.description
+    				+
+    				'</div>';
+    		break;
 
-					'<div class="flashPointDiv template3" >'
-						+
-						'<video autoplay muted>'
-						+
-  							'<source src="'+ data.results[i].video.url+'" type="video/mp4">'+
- 						+ '</video>'		
-						+
-						'</div>'
-				);
-				break;
+    	case 2:
+    		html = '<div class="type2">'
+    				
+    				+
+    					'<video class="video" width = "320" height = "240" autoplay muted>'
+    				+
+    					'<source src="'+item.video+'" type="video/mp4">'
+    				+
+    					'</video>'
+    				+
+    					'<br>'
+    				+
+    					item.description
+    				+
+    				'</div>';
+    			break;
+    }
+    //console.log(item);
+    return html;
+  }
+  };
 
+  // Create a Timeline
+  
+  var timeline = new vis.Timeline(container, items, dataSetOptions);
+
+	  // Animate the darn thing
+	window.setInterval(function() {
+
+		// Animate only if there's something to animate
+		if (elemOnStage > 0){
+
+			var d = new Date();
+
+			timeline.moveTo(d.getTime(), {});
+
+			for (i = 0; i < items.length; i++){
+
+				if (items[i].flashType = 2){
+					// If video type keep it stationary
+					items.update({id:i, start: d.getTime()});
+
+				}
+			}
+
+			console.log(d.getTime());
 
 		}
 
-		//setting x position
+	}, 30);
 
-		var limit = data.results.length;
-
-		var myDate = new Date( data.results[ limit-1 ].flashPointDate.iso )
-		console.log( "!" + $(".container").children().length );
-
-		for( i=0; i<limit; i++){
-			var myDate1 = new Date( data.results[i].flashPointDate.iso );
-			
-			var distance = Math.round( ( myDate.getTime() - myDate1.getTime() )/100 );
-			console.log("x: "+distance);
-			$(".container :nth-child(" + i + ")").css({
-
-					'MarginRight':distance +'cm'
-			});
-		}
-		
-
-
-	}
-	console.log( $(".container").children().length );
 }
-
-// util.ajaxRequest({
-//   method: "POST",
-//   url: "",
-//   data: {
-//     // Data to send to API here
-//   },
-//   successCallback: function(data) {
-//
-//   },
-//   errorCallback: function(e) {
-//     console.log("There is an error" + e);
-//   }
-// });
