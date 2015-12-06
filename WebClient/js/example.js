@@ -118,14 +118,19 @@ function setData(data) {
 
 			for (i = 0; i < items.length; i++){
 
-				if (items[i].flashType = 2){
+				console.log(items.get(i).flashType);
+
+				if (items.get(i).flashType == 2){
+
 					// If video type keep it stationary
-					items.update({id:i, start: d.getTime()});
+					//items.update({id:i, start: d.getTime()});
 
 				}
+				
+
 			}
 
-			console.log(d.getTime());
+			//console.log(d.getTime());
 
 		}
 
