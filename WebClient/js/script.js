@@ -6,28 +6,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-document.getElementById('back').addEventListener('click', function() {
-    $(".container :nth-child(" + (number - deleted) + ")").fadeOut()
-    deleted = deleted + 1
-});
-
-var initialPositions = [];
-document.getElementById('add').addEventListener('click', function() {
-    deleted = 0
-    number = $(".container").children().length + 1;
-    var randomColor = Math.floor(Math.random() * 16777215).toString(16)
-    var offSet = containerWidth - (number * 50);
-    $(".container").append('<div id="p2" class="object"></div>');
-    $('.container').each(function() {
-        $(".container :nth-child(" + number + ")").css({
-            'marginTop': getRandomInt(10, 300),
-            'marginLeft': offSet,
-            'background': '#' + randomColor
-        });
-    });
-    initialPositions.push(offSet);
-}, false);
-
 function moveTheElems() {
     var value = $('#range').val();
     var maxVal = 100;
