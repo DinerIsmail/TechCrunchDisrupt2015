@@ -13,6 +13,7 @@ import CoreLocation
 public class DetailsViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 	var locationManager : CLLocationManager?
 	public var currentPhoto : UIImage?
+	public var currentVideo : NSData?
 	
 	var baseScrollPosition = CGPointMake(0, 0);
 	
@@ -20,6 +21,7 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var imageToUploadView: UIImageView!
 	@IBOutlet weak var descriptionTextField: UITextField!
+	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,9 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 		self.locationManager?.delegate = self
 		self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
 		self.locationManager?.startUpdatingLocation()
+		
+		// Set up activity indicator
+		
 	}
 	
 	public override func viewDidAppear(animated: Bool) {
@@ -49,28 +54,43 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 	}
 
 	@IBAction func uploadPicture(sender: AnyObject) {
-		//if didTakePhoto == true {
-			let imageToSend = PFObject(className: "flashPoint")
-			imageToSend["image"] = PFFile(name: NSUUID().UUIDString + ".jpg", data: UIImageJPEGRepresentation(self.imageToUploadView.image!, 0.5)!)
-			imageToSend["flashPointDescription"] = descriptionTextField.text
-			imageToSend["flashPointType"] = 1
-			imageToSend["flashPointDate"] = NSDate()
+		func uploadFlashPoint(flashPoint: AnyObject, flashPointType: Int) {
+			let flashPointToSend = PFObject(className: "flashPoint")
+			flashPointToSend["flashPointDescription"] = descriptionTextField.text
+			flashPointToSend["flashPointType"] = flashPointType
+			flashPointToSend["flashPointDate"] = NSDate()
+			
+			if flashPointType == 1 {
+				let resizedImage =  ResizeImage(self.imageToUploadView.image!, targetSize: CGSizeMake(150,200));
+				flashPointToSend["image"] = PFFile(name: NSUUID().UUIDString + ".jpg", data: UIImageJPEGRepresentation(resizedImage, 0.5)!)
+			} else if flashPointType == 2 {
+				flashPointToSend["video"] = PFFile(name: NSUUID().UUIDString + ".mp4", data: self.currentVideo!)
+			}
 			
 			if let lastLocation = lastLocation {
 				let locationGeoPoint = PFGeoPoint(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
-				imageToSend["location"] = locationGeoPoint
+				flashPointToSend["location"] = locationGeoPoint
 			} else {
 				print("Image uploaded without location data")
 			}
-
-			imageToSend.saveInBackgroundWithBlock({ (success, error) -> Void in
+			
+			flashPointToSend.saveInBackgroundWithBlock({ (success, error) -> Void in
 				if success == true {
-					print("Image uploaded with ID: \(imageToSend.objectId)")
+					print("FlashPoint uploaded with ID: \(flashPointToSend.objectId)")
 				} else {
-					print("Image upload failed")
+					print("FlashPoint upload failed")
 				}
 			})
-		//}
+			
+		}
+		
+		if let photo = self.currentPhoto {
+			uploadFlashPoint(photo, flashPointType: 1)
+		} else if let video = self.currentVideo {
+			uploadFlashPoint(video, flashPointType: 2)
+		}
+		
+		
 	}
 	
 	// Keyboard
@@ -99,6 +119,11 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 		return false
 	}
 	
+	public func textFieldDidEndEditing(DescriptionView: UITextField){
+		// Scroll back to base position
+		scrollView.setContentOffset(baseScrollPosition, animated: true);
+	}
+	
 	// Location
 	public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		lastLocation = locations.last
@@ -107,6 +132,32 @@ public class DetailsViewController: UIViewController, CLLocationManagerDelegate,
 	public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("Had an error getting the location")
 		self.locationManager?.stopUpdatingLocation()
+	}
+	
+	func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+		let size = image.size
+		
+		let widthRatio  = targetSize.width  / image.size.width
+		let heightRatio = targetSize.height / image.size.height
+		
+		// Figure out what our orientation is, and use that to form the rectangle
+		var newSize: CGSize
+		if(widthRatio > heightRatio) {
+			newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+		} else {
+			newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+		}
+		
+		// This is the rect that we've calculated out and this is what is actually used below
+		let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+		
+		// Actually do the resizing to the rect using the ImageContext stuff
+		UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+		image.drawInRect(rect)
+		let newImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		return newImage
 	}
 	
 	override public func didReceiveMemoryWarning() {

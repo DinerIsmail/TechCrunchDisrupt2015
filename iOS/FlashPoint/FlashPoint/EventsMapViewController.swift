@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class EventsMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	@IBOutlet weak var mapView: UIView!
@@ -34,6 +35,9 @@ class EventsMapViewController: UIViewController, UIImagePickerControllerDelegate
 			if UIImagePickerController.isCameraDeviceAvailable(rearCamera) {
 				picker.cameraDevice = rearCamera
 				picker.delegate = self
+				picker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+				picker.videoQuality = UIImagePickerControllerQualityType.TypeMedium
+				
 				self.presentViewController(picker, animated: true, completion: nil)
 			}
 		}
@@ -42,13 +46,37 @@ class EventsMapViewController: UIViewController, UIImagePickerControllerDelegate
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		let detailsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailsViewController") as! DetailsViewController
 		self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+
+		let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+		picker.dismissViewControllerAnimated(true) { () -> Void in
+			if mediaType == kUTTypeImage {
+				detailsViewController.currentPhoto = info[UIImagePickerControllerOriginalImage] as? UIImage
+			} else if mediaType == kUTTypeMovie {
+				let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path
+				if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path!) {
+					//TODO: Add callback for showing confirmation that video was saved
+					UISaveVideoAtPathToSavedPhotosAlbum(path!, self, nil, nil)
+					print("Video was probably saved succesfully")
+					detailsViewController.currentVideo = NSData(contentsOfFile: path!)
+				}
+			}
+		}
 		
-		let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-		self.imageTaken = image
-		
-		picker.dismissViewControllerAnimated(true, completion: nil)
-		detailsViewController.currentPhoto = image
 		self.presentViewController(detailsViewController, animated: true, completion: nil)
+	}
+	
+	func video(video: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
+		var title = "Success"
+		var message = "Video was saved"
+		
+		if let saveError = error {
+			title = "Error"
+			message = "Video failed to save"
+		}
+		
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -58,16 +86,5 @@ class EventsMapViewController: UIViewController, UIImagePickerControllerDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Pass the selected object to the new view controller.
 		
-		if segue.identifier == "DetailsViewController" {
-			let destinationViewController = segue.destinationViewController as! DetailsViewController
-			if let imageTaken = self.imageTaken {
-				destinationViewController.currentPhoto = imageTaken
-			}
-		} else {
-			
-		}
-		
     }
-
-
 }
