@@ -5,7 +5,13 @@ var container = document.getElementById('visualization');
  var items = new vis.DataSet({});
  var elemOnStage = 0;
 
+// Animation variables
+var run = true;
+var runLive = false;
 
+
+// Animation speed in ms per frame
+var timeFrame = 100;
 
 window.setInterval(function() {
 	util.ajaxRequest({
@@ -53,6 +59,7 @@ function setData(data) {
   	width: '100%',
   	height: '700px',
   	configure: false,
+  	stack: true,
 
   	template: function (item) {
 
@@ -106,34 +113,55 @@ function setData(data) {
   
   var timeline = new vis.Timeline(container, items, dataSetOptions);
 
-	  // Animate the darn thing
+  // Buttons
+
+  document.getElementById('play').onclick = function() {
+  	run = true;
+  };
+
+  document.getElementById('stop').onclick = function() {
+  	run = false;
+  	runLive = false;
+  };
+
+  document.getElementById('live').onclick = function() {
+  	runLive = true;
+  };
+
+
+	
+	// Animate the darn thing
 	window.setInterval(function() {
 
-		// Animate only if there's something to animate
-		if (elemOnStage > 0){
 
+		// Animate only if there's something to animate
+		if (elemOnStage > 0 ){
 			var d = new Date();
 
-			timeline.moveTo(d.getTime(), {});
+			// If live:
+			if (runLive == true){
 
-			for (i = 0; i < items.length; i++){
+				// First go there FAST
+				timeline.moveTo(d.getTime(), {animation: false});
 
-				console.log(items.get(i).flashType);
+				timeline.moveTo(d.getTime(), {duration:100, easingFunction:"linear"});
 
-				if (items.get(i).flashType == 2){
+			// Not live but playing	
+			} else if (run == true){
 
-					// If video type keep it stationary
-					//items.update({id:i, start: d.getTime()});
 
-				}
+				timeline.setWindow(timeline.getWindow().start.getTime() + 30000, timeline.getWindow().end.getTime() + 30000, {});
 				
+
+			} else if (run == false){
+
+				// Stopped, let the people move it
 
 			}
 
-			//console.log(d.getTime());
-
 		}
 
-	}, 30);
+
+	}, timeFrame);
 
 }
