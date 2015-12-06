@@ -14,6 +14,8 @@ var runType = 2;
 // 3 - fast forwards
 // 4 - live
 
+var quickAnime = false;
+
 // Animation speed in ms per frame
 var timeFrame = 100;
 var playSpeed = 1000;
@@ -64,10 +66,10 @@ function setData(data) {
   var dataSetOptions = {
   	width: '100%',
   	height: '700px',
-  	throttleRedraw: 20,
+  	throttleRedraw: 1,
   	configure: false,
   	stack: true,
-  	zoomMin: 10 * 60 * 1000,
+  	zoomMin: 60 * 1000,
   	zoomMax: 10 * 60 * 60 * 1000,
 
   	moveable: false,
@@ -145,6 +147,8 @@ function setData(data) {
 
   document.getElementById('live').onclick = function() {
   	runType = 4;
+  	quickAnime = true;
+  	var tmpDate = new Date();
   };
 
   document.getElementById('fitAll').onclick = function() {
@@ -237,10 +241,22 @@ function setData(data) {
 				// live:
 				case 4:
 					// Don't let the user move it!
-					timeline.setOptions({moveable: false});
+					timeline.setOptions({moveable: true});
 
 					// First go there FAST
-					timeline.moveTo(d.getTime(), {animation: false});
+					if (quickAnime == true){
+
+						//console.log("dap");
+
+						timeline.moveTo(d.getTime(), {animation: false});
+
+						//timeline.setWindow (d.getTime() - 30 * 1000 , d.getTime() + 30 * 1000, {});
+
+						timeline.setWindow (d.getTime() - 30 * 1000 , d.getTime() + 30 * 1000, {animated:false});
+
+						quickAnime = false;	
+					}
+					
 
 					timeline.moveTo(d.getTime(), {duration: 100, easingFunction:"linear"});
 
